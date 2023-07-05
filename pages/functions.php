@@ -33,3 +33,28 @@ function register($login, $password, $confirmPassword, $email)
         return "<div class='alert alert-success' role='alert'>Product successfully inserted!</div>";
     }
 }
+
+
+function login($username, $password)
+{
+    $link = connect_to_db("localhost", "root", "", "agencydb", 3306);
+
+    $queryText = "SELECT * FROM users WHERE Login = '$username'";
+    $result = mysqli_query($link, $queryText);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['Passwrd'])) {
+            session_start();
+            $_SESSION['ruser'] = $username;
+
+            if ($username === 'admin') {
+                $_SESSION['radmin'] = $username;
+            }
+
+            return true;
+        }
+    }
+
+    return false;
+}

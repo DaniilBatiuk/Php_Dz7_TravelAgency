@@ -8,19 +8,31 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link
-          <? echo $page==1 ? "active" :"" ?>" aria-current="page" href="?page=1">Tours</a>
+          <? echo $page == 1 ? "active" : "" ?>" aria-current="page" href="?page=1">Tours</a>
         </li>
         <li class="nav-item">
           <a class="nav-link
-          <? echo $page==2 ? "active" :"" ?>" href="?page=2">Comments</a>
+          <? echo $page == 2 ? "active" : "" ?>" href="?page=2">Comments</a>
         </li>
-        <li class="nav-item">
+        <?
+        if (isset($_SESSION['radmin'])) {
+          ?>
+          <li class="nav-item">
           <a class="nav-link
           <? echo $page==3 ? "active" :"" ?>" href="?page=3">Admin</a>
+          </li>
+          <?} ?>
+        <li class="nav-item">
+          <a class="nav-link
+          <? echo $page == 4 ? "active" : "" ?>" href="?page=4">Registration</a>
         </li>
         <li class="nav-item">
           <a class="nav-link
-          <? echo $page==4 ? "active" :"" ?>" href="?page=4">Registration</a>
+          <? echo $page == 5 ? "active" : "" ?>" href="?page=5">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link
+          <? echo $page == 6 ? "active" : "" ?>" href="?page=6">Private</a>
         </li>
       </ul>
     </div>
